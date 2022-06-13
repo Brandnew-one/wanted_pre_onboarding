@@ -12,9 +12,14 @@ class CityWeatherViewController: UIViewController, ViewRepresentable {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupNaviView()
     setupView()
     setupCollectionView()
     setupConstraints()
+  }
+
+  private func setupNaviView() {
+    navigationItem.title = "날씨"
   }
 
   func setupView() {
@@ -23,7 +28,7 @@ class CityWeatherViewController: UIViewController, ViewRepresentable {
     view.addSubview(cityWeatherView)
   }
 
-  func setupCollectionView() {
+  private func setupCollectionView() {
     cityWeatherView.collectionView.register(
       WeatherCollectionViewCell.self,
       forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier
@@ -46,7 +51,12 @@ class CityWeatherViewController: UIViewController, ViewRepresentable {
 extension CityWeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return 10 // TODO: - VM
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let vc = DetailWeatherViewController()
+    navigationController?.pushViewController(vc, animated: true)
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Test Dummy View
-class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable {
+class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable, CellRepresentable {
   static let identifier = "WeatherCollectionViewCell"
   let imageView = UIImageView()
 
@@ -24,6 +24,7 @@ class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable {
 
   func setupView() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
+    self.backgroundColor = .white
     self.addSubview(imageView)
     imageView.image = UIImage(systemName: "person")
   }
@@ -37,6 +38,7 @@ class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable {
     ])
   }
 
-//  func setupCell() { } // Model 만들면서
-
+  func cellConfig() {
+    print(#function)
+  }
 }
