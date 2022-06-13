@@ -9,19 +9,25 @@
 /* Begin PBXBuildFile section */
 		6569DF8B2857819900568281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DF8A2857819900568281 /* AppDelegate.swift */; };
 		6569DF8D2857819900568281 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DF8C2857819900568281 /* SceneDelegate.swift */; };
-		6569DF8F2857819900568281 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DF8E2857819900568281 /* ViewController.swift */; };
 		6569DF942857819A00568281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6569DF932857819A00568281 /* Assets.xcassets */; };
 		6569DF972857819A00568281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6569DF952857819A00568281 /* LaunchScreen.storyboard */; };
+		6569DF9F2857829B00568281 /* CityWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DF9E2857829B00568281 /* CityWeatherViewController.swift */; };
+		6569DFA2285782E400568281 /* CityWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DFA1285782E400568281 /* CityWeatherView.swift */; };
+		6569DFA92857840300568281 /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DFA82857840300568281 /* ViewRepresentable.swift */; };
+		6569DFAD28578E1300568281 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6569DFAC28578E1300568281 /* WeatherCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6569DF872857819900568281 /* OpenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6569DF8A2857819900568281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6569DF8C2857819900568281 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6569DF8E2857819900568281 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6569DF932857819A00568281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6569DF962857819A00568281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6569DF982857819A00568281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6569DF9E2857829B00568281 /* CityWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewController.swift; sourceTree = "<group>"; };
+		6569DFA1285782E400568281 /* CityWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherView.swift; sourceTree = "<group>"; };
+		6569DFA82857840300568281 /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
+		6569DFAC28578E1300568281 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,73 @@
 		6569DF892857819900568281 /* OpenWeather */ = {
 			isa = PBXGroup;
 			children = (
-				6569DF8A2857819900568281 /* AppDelegate.swift */,
-				6569DF8C2857819900568281 /* SceneDelegate.swift */,
-				6569DF8E2857819900568281 /* ViewController.swift */,
+				6569DFA62857834600568281 /* Supporting Files */,
+				6569DFA7285783DB00568281 /* Protocols */,
+				6569DFA52857833800568281 /* Network */,
+				6569DFA0285782D100568281 /* Views */,
+				6569DFA3285782E800568281 /* ViewModel */,
 				6569DF932857819A00568281 /* Assets.xcassets */,
 				6569DF952857819A00568281 /* LaunchScreen.storyboard */,
 				6569DF982857819A00568281 /* Info.plist */,
 			);
 			path = OpenWeather;
+			sourceTree = "<group>";
+		};
+		6569DFA0285782D100568281 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6569DFAB28578DEF00568281 /* Cell */,
+				6569DFAA28578BC600568281 /* CityWeatherView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6569DFA3285782E800568281 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6569DFA52857833800568281 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		6569DFA62857834600568281 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6569DF8C2857819900568281 /* SceneDelegate.swift */,
+				6569DF8A2857819900568281 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6569DFA7285783DB00568281 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6569DFA82857840300568281 /* ViewRepresentable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6569DFAA28578BC600568281 /* CityWeatherView */ = {
+			isa = PBXGroup;
+			children = (
+				6569DFA1285782E400568281 /* CityWeatherView.swift */,
+				6569DF9E2857829B00568281 /* CityWeatherViewController.swift */,
+			);
+			path = CityWeatherView;
+			sourceTree = "<group>";
+		};
+		6569DFAB28578DEF00568281 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6569DFAC28578E1300568281 /* WeatherCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +199,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6569DF8F2857819900568281 /* ViewController.swift in Sources */,
+				6569DFA2285782E400568281 /* CityWeatherView.swift in Sources */,
 				6569DF8B2857819900568281 /* AppDelegate.swift in Sources */,
+				6569DF9F2857829B00568281 /* CityWeatherViewController.swift in Sources */,
+				6569DFAD28578E1300568281 /* WeatherCollectionViewCell.swift in Sources */,
 				6569DF8D2857819900568281 /* SceneDelegate.swift in Sources */,
+				6569DFA92857840300568281 /* ViewRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
