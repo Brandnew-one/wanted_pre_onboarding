@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  APIService.swift
 //  OpenWeather
 //
 //  Created by Bran on 2022/06/14.
@@ -11,8 +11,8 @@ enum NetworkError: Error {
   case `default`
 }
 
-class NetworkManager {
-  static let shared = NetworkManager()
+class APIService {
+  static let shared = APIService()
 
   private let baseURL = URL(string: "https://api.openweathermap.org/data/2.5/group")!
   private let cityKeys = [
@@ -23,6 +23,7 @@ class NetworkManager {
   ]
   private var cityID: [String] = []
   private var appID: String = ""
+  private var id: String = ""
 
   private init() {
     setupCityID()
@@ -38,14 +39,21 @@ class NetworkManager {
       return
     }
     for key in cityKeys {
-      guard let id = dictionary[key] as? String else { return } // MARK: - 출력해줄지 고민
-      cityID.append(id)
+      if let id = dictionary[key] as? String {
+        cityID.append(id)
+      }
+    }
+    for i in 0..<cityID.count {
+      self.id += cityID[i]
+      if i != cityID.count - 1 {
+        self.id += ","
+      }
     }
   }
 
   private func setupAppID() {
     guard
-      let plist = Bundle.main.url(forResource: "CityID", withExtension: "plist"),
+      let plist = Bundle.main.url(forResource: "AppID", withExtension: "plist"),
       let dictionary = NSDictionary(contentsOf: plist),
       let id = dictionary["appid"] as? String
     else {
@@ -58,20 +66,12 @@ class NetworkManager {
   func requestWeather(
     completion: @escaping (Result<Weathers, NetworkError>) -> Void
   ) {
-    // MARK: - func 로 뺴는거 고민해보기
-    var id: String = ""
-    for i in 0..<cityID.count {
-      id += cityID[i]
-      if i != cityID.count - 1 {
-        id += ","
-      }
-    }
     var url = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
     let query: [URLQueryItem] = [
-      URLQueryItem(name: "id", value: id),
-      URLQueryItem(name: "appid", value: appID),
+      URLQueryItem(name: "id", value: self.id),
+      URLQueryItem(name: "appid", value: self.appID),
     ]
     url?.queryItems = query
 
@@ -88,7 +88,6 @@ class NetworkManager {
           return
         }
         if let weatherData = try? JSONDecoder().decode(Weathers.self, from: data) {
-          print(weatherData)
           completion(.success(weatherData))
         } else {
           completion(.failure(.default))

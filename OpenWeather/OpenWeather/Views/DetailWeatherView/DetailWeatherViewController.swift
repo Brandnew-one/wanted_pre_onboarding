@@ -10,6 +10,11 @@ import UIKit
 class DetailWeatherViewController: UIViewController, ViewRepresentable {
   let detailWeatherView = DetailWeatherView()
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = false
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
@@ -17,7 +22,7 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
   }
 
   func setupView() {
-    view.backgroundColor = .white
+    view.backgroundColor = .black
     detailWeatherView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(detailWeatherView)
   }

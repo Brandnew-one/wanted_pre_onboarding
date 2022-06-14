@@ -49,9 +49,11 @@ class ImageCacheManager {
 
 extension UIImageView {
   func getImageFromURL(_ url: String) {
-    ImageCacheManager.getImage(url) { result in
+    let imageURL = "http://openweathermap.org/img/wn/" + url + "@2x.png"
+    ImageCacheManager.getImage(imageURL) { result in
       switch result {
       case .failure(.default):
+        print("fail")
         self.image = UIImage()
       case .success(let image):
         self.image = image

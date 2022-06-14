@@ -27,7 +27,7 @@ class CityWeatherView: UIView, ViewRepresentable {
   func setupView() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     self.addSubview(collectionView)
-    collectionView.backgroundColor = .systemGray3
+    collectionView.backgroundColor = .black
   }
 
   func setupFlowLayout() {

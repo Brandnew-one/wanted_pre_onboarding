@@ -9,6 +9,18 @@ import UIKit
 
 class CityWeatherViewController: UIViewController, ViewRepresentable {
   let cityWeatherView = CityWeatherView()
+  let cityWeatherViewModel = CityWeatherViewModel()
+
+  override var preferredStatusBarStyle: UIStatusBarStyle { // TODO: -
+    return .lightContent
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = true
+    cityWeatherViewModel.fetchWeathers {
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -16,14 +28,25 @@ class CityWeatherViewController: UIViewController, ViewRepresentable {
     setupView()
     setupCollectionView()
     setupConstraints()
+
+    cityWeatherViewModel.fetchWeathers {
+      DispatchQueue.main.async {
+        self.cityWeatherView.collectionView.reloadData()
+      }
+    }
+  }
+
+  // TODO: -
+  override func viewDidAppear(_ animated: Bool) {
+    navigationController?.navigationBar.barStyle = .black
   }
 
   private func setupNaviView() {
-    navigationItem.title = "날씨"
+    navigationController?.navigationBar.isHidden = true
   }
 
   func setupView() {
-    view.backgroundColor = .white
+    view.backgroundColor = .black
     cityWeatherView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(cityWeatherView)
   }
@@ -51,7 +74,8 @@ class CityWeatherViewController: UIViewController, ViewRepresentable {
 extension CityWeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10 // TODO: - VM
+    guard let weathers = cityWeatherViewModel.weathers else { return 0 }
+    return weathers.cnt
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -63,10 +87,12 @@ extension CityWeatherViewController: UICollectionViewDelegate, UICollectionViewD
     guard
       let cell = cityWeatherView.collectionView.dequeueReusableCell(
       withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath
-    ) as? WeatherCollectionViewCell
+    ) as? WeatherCollectionViewCell,
+      let item = cityWeatherViewModel.weathers?.list[indexPath.item]
     else {
       return UICollectionViewCell()
     }
+    cell.cellConfig(item)
     return cell
   }
 

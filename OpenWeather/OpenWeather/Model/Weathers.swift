@@ -18,7 +18,7 @@ struct List: Codable {
   let coord: Coord
   let sys: Sys
   let weather: [Weather]
-  let main: Main
+  let main: MainClass
   let visibility: Int
   let wind: Wind
   let clouds: Clouds
@@ -36,10 +36,12 @@ struct Coord: Codable {
   let lon, lat: Double
 }
 
-// MARK: - Main
-struct Main: Codable {
+// MARK: - MainClass
+struct MainClass: Codable {
   let temp, feelsLike, tempMin, tempMax: Double
-  let pressure, seaLevel, grndLevel, humidity: Int
+  let pressure: Int
+  let seaLevel, grndLevel: Int?
+  let humidity: Int
 
   enum CodingKeys: String, CodingKey {
     case temp
@@ -62,7 +64,9 @@ struct Sys: Codable {
 // MARK: - Weather
 struct Weather: Codable {
   let id: Int
-  let main, weatherDescription, icon: String
+  let main: String
+  let weatherDescription: String
+  let icon: String
 
   enum CodingKeys: String, CodingKey {
     case id, main
