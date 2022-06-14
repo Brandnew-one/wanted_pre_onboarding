@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>New item</key>
+	<dict>
+		<key>공주</key>
+		<string>1842616</string>
+		<key>광주</key>
+		<string>1841808</string>
+		<key>구미</key>
+		<string>1842225</string>
+		<key>군산</key>
+		<string>1842025</string>
+		<key>대구</key>
+		<string>1835327</string>
+		<key>대전</key>
+		<string>1835224</string>
+		<key>목포</key>
+		<string>1841066</string>
+		<key>부산</key>
+		<string>1838519</string>
+		<key>서산</key>
+		<string>1835895</string>
+		<key>서울</key>
+		<string>1835848</string>
+		<key>속초</key>
+		<string>1836553</string>
+		<key>수원</key>
+		<string>1835553</string>
+		<key>순천</key>
+		<string>1835648</string>
+		<key>울산</key>
+		<string>1833747</string>
+		<key>익산</key>
+		<string>1843491</string>
+		<key>전주</key>
+		<string>1845457</string>
+		<key>제주</key>
+		<string>1846266</string>
+		<key>천안</key>
+		<string>1845759</string>
+		<key>청주</key>
+		<string>1845604</string>
+		<key>춘천</key>
+		<string>1845136</string>
+	</dict>
+</dict>
+</plist>

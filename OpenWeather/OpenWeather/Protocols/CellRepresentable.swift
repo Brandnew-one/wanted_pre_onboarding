@@ -10,4 +10,3 @@ import Foundation
 protocol CellRepresentable {
   func cellConfig() // MARK: - Model - list 설정 예정
 }
-
