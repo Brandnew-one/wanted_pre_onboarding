@@ -27,6 +27,8 @@
 		6584BC75285881D100E6933F /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584BC74285881D100E6933F /* Double + Extension.swift */; };
 		6584BC772858AAFE00E6933F /* DetailWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584BC762858AAFE00E6933F /* DetailWeatherViewModel.swift */; };
 		6584BC792858AF4B00E6933F /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584BC782858AF4B00E6933F /* DetailImageCell.swift */; };
+		6584BC7B2858F7E500E6933F /* DetailInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584BC7A2858F7E500E6933F /* DetailInformationCell.swift */; };
+		6584BC7D2858FCA200E6933F /* List + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584BC7C2858FCA200E6933F /* List + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		6584BC74285881D100E6933F /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
 		6584BC762858AAFE00E6933F /* DetailWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherViewModel.swift; sourceTree = "<group>"; };
 		6584BC782858AF4B00E6933F /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
+		6584BC7A2858F7E500E6933F /* DetailInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInformationCell.swift; sourceTree = "<group>"; };
+		6584BC7C2858FCA200E6933F /* List + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			children = (
 				6569DFAC28578E1300568281 /* WeatherCollectionViewCell.swift */,
 				6584BC782858AF4B00E6933F /* DetailImageCell.swift */,
+				6584BC7A2858F7E500E6933F /* DetailInformationCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6584BC74285881D100E6933F /* Double + Extension.swift */,
+				6584BC7C2858FCA200E6933F /* List + Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6569DFB22857960800568281 /* DetailWeatherView.swift in Sources */,
+				6584BC7B2858F7E500E6933F /* DetailInformationCell.swift in Sources */,
 				6569DFA2285782E400568281 /* CityWeatherView.swift in Sources */,
 				6569DF8B2857819900568281 /* AppDelegate.swift in Sources */,
 				6584BC6E2858647D00E6933F /* APIService.swift in Sources */,
@@ -283,6 +290,7 @@
 				6584BC722858763A00E6933F /* CityWeatherViewModel.swift in Sources */,
 				6569DFB0285794BC00568281 /* CellRepresentable.swift in Sources */,
 				6584BC75285881D100E6933F /* Double + Extension.swift in Sources */,
+				6584BC7D2858FCA200E6933F /* List + Extension.swift in Sources */,
 				6569DFBC28579C8D00568281 /* ImageCacheManager.swift in Sources */,
 				6569DFA92857840300568281 /* ViewRepresentable.swift in Sources */,
 			);

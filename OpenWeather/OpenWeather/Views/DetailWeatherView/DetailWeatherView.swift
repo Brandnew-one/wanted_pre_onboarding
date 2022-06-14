@@ -22,6 +22,7 @@ class DetailWeatherView: UIView, ViewRepresentable {
 
   func setupView() {
     tableView.translatesAutoresizingMaskIntoConstraints = false
+    tableView.backgroundColor = .black
     self.backgroundColor = .black
     self.addSubview(tableView)
   }

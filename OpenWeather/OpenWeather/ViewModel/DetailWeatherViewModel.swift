@@ -10,5 +10,7 @@ import Foundation
 class DetailWeatherViewModel {
   var weather: List?
 
-  
+  func getCityName() -> String? {
+    weather?.name
+  }
 }

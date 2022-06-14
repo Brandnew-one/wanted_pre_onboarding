@@ -18,6 +18,7 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupNavi()
     setupView()
     setupConstraints()
     setupTableView()
@@ -38,12 +39,37 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
     ])
   }
 
+  private func setupNavi() {
+    navigationItem.title = detailWeatherViewModel.getCityName()
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "chevron.backward"),
+      style: .plain,
+      target: self,
+      action: #selector(backButtonClicked)
+    )
+    navigationItem.leftBarButtonItem?.tintColor = .white
+
+    let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    navigationController?.navigationBar.titleTextAttributes = textAttributes
+  }
+
   private func setupTableView() {
     detailWeatherView.tableView.delegate = self
     detailWeatherView.tableView.dataSource = self
-    detailWeatherView.tableView.register(DetailImageCell.self, forCellReuseIdentifier: DetailImageCell.identifier)
+    detailWeatherView.tableView.register(
+      DetailImageCell.self,
+      forCellReuseIdentifier: DetailImageCell.identifier
+    )
+    detailWeatherView.tableView.register(
+      DetailInformationCell.self,
+      forCellReuseIdentifier: DetailInformationCell.identifier
+    )
   }
-  
+
+  @objc
+  func backButtonClicked() {
+    self.navigationController?.popViewController(animated: true)
+  }
 }
 
 extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegate {
@@ -56,7 +82,7 @@ extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegat
     if indexPath.section == 0 {
       return 200
     } else {
-      return 0
+      return 40
     }
   }
 
@@ -64,7 +90,7 @@ extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegat
     if section == 0 {
       return 1
     } else {
-      return 0
+      return 6
     }
   }
 
@@ -82,7 +108,18 @@ extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegat
       cell.cellConfig(weather)
       return cell
     } else {
-      return UITableViewCell()
+      guard
+        let cell = detailWeatherView.tableView.dequeueReusableCell(
+          withIdentifier: DetailInformationCell.identifier,
+          for: indexPath
+        ) as? DetailInformationCell,
+        let weather = detailWeatherViewModel.weather
+      else {
+        return UITableViewCell()
+      }
+      cell.index = indexPath.item
+      cell.cellConfig(weather)
+      return cell
     }
   }
 
