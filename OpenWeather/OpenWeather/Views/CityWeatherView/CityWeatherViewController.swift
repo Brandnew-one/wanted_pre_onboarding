@@ -80,6 +80,7 @@ extension CityWeatherViewController: UICollectionViewDelegate, UICollectionViewD
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let vc = DetailWeatherViewController()
+    vc.detailWeatherViewModel.weather = cityWeatherViewModel.weathers?.list[indexPath.item]
     navigationController?.pushViewController(vc, animated: true)
   }
 

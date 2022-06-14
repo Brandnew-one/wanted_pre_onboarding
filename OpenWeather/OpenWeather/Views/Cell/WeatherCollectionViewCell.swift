@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - Test Dummy View
 class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable, CellRepresentable {
   static let identifier = "WeatherCollectionViewCell"
   let imageView = UIImageView()
@@ -35,8 +34,8 @@ class WeatherCollectionViewCell: UICollectionViewCell, ViewRepresentable, CellRe
     self.layer.cornerRadius = 20
 
     cityLabel.font = .systemFont(ofSize: 20, weight: .heavy)
-    tempLabel.font = .systemFont(ofSize: 16, weight: .bold)
-    humidityLabel.font = .systemFont(ofSize: 16, weight: .bold)
+    tempLabel.font = .systemFont(ofSize: 15, weight: .bold)
+    humidityLabel.font = .systemFont(ofSize: 15, weight: .bold)
 
     cityLabel.textColor = .black
     tempLabel.textColor = .black

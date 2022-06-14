@@ -9,6 +9,7 @@ import UIKit
 
 class DetailWeatherViewController: UIViewController, ViewRepresentable {
   let detailWeatherView = DetailWeatherView()
+  let detailWeatherViewModel = DetailWeatherViewModel()
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -19,6 +20,7 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
     super.viewDidLoad()
     setupView()
     setupConstraints()
+    setupTableView()
   }
 
   func setupView() {
@@ -35,4 +37,54 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
       detailWeatherView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
+
+  private func setupTableView() {
+    detailWeatherView.tableView.delegate = self
+    detailWeatherView.tableView.dataSource = self
+    detailWeatherView.tableView.register(DetailImageCell.self, forCellReuseIdentifier: DetailImageCell.identifier)
+  }
+  
+}
+
+extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegate {
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.section == 0 {
+      return 200
+    } else {
+      return 0
+    }
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if section == 0 {
+      return 1
+    } else {
+      return 0
+    }
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if indexPath.section == 0 {
+      guard
+        let cell = detailWeatherView.tableView.dequeueReusableCell(
+          withIdentifier: DetailImageCell.identifier,
+          for: indexPath
+        ) as? DetailImageCell,
+        let weather = detailWeatherViewModel.weather
+      else {
+        return UITableViewCell()
+      }
+      cell.cellConfig(weather)
+      return cell
+    } else {
+      return UITableViewCell()
+    }
+  }
+
+
 }

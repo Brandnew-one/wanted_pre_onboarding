@@ -7,9 +7,8 @@
 
 import UIKit
 
-// MARK: - Test Dummy View
 class DetailWeatherView: UIView, ViewRepresentable {
-  let imageView = UIImageView()
+  let tableView = UITableView()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -22,18 +21,17 @@ class DetailWeatherView: UIView, ViewRepresentable {
   }
 
   func setupView() {
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    self.backgroundColor = .white
-    self.addSubview(imageView)
-    imageView.image = UIImage(systemName: "person")
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    self.backgroundColor = .black
+    self.addSubview(tableView)
   }
 
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalTo: self.topAnchor),
-      imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-      imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-      imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+      tableView.topAnchor.constraint(equalTo: self.topAnchor),
+      tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
     ])
   }
 }
