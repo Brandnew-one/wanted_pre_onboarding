@@ -7,7 +7,6 @@
 
 import Foundation
 
-//sensible temperature
 enum CellType: Int {
   case sensibleTemp = 0
   case minimumTemp = 1

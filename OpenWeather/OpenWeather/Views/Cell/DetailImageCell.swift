@@ -9,6 +9,7 @@ import UIKit
 
 class DetailImageCell: UITableViewCell, ViewRepresentable, CellRepresentable {
   static let identifier = "DetailImageCell"
+  let stackView = UIStackView()
   let tableImageView = UIImageView()
   let tempLabel = UILabel()
   let descriptionLabel = UILabel()
@@ -24,7 +25,7 @@ class DetailImageCell: UITableViewCell, ViewRepresentable, CellRepresentable {
   }
 
   func setupView() {
-    [tableImageView, tempLabel, descriptionLabel].forEach {
+    [stackView, descriptionLabel].forEach {
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.backgroundColor = .black
       self.addSubview($0)
@@ -35,20 +36,26 @@ class DetailImageCell: UITableViewCell, ViewRepresentable, CellRepresentable {
 
     tempLabel.font = .systemFont(ofSize: 50, weight: .heavy)
     descriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
+
+    stackView.spacing = 8
+    stackView.distribution = .fillEqually
+
+    [tableImageView, tempLabel].forEach {
+      $0.translatesAutoresizingMaskIntoConstraints = false
+      $0.backgroundColor = .black
+      stackView.addArrangedSubview($0)
+    }
   }
 
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      tableImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
-      tableImageView.heightAnchor.constraint(equalTo: tableImageView.widthAnchor),
-      tableImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -25),
-      tableImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 18)
+      stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+      stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 18)
     ])
 
     NSLayoutConstraint.activate([
-      tempLabel.centerYAnchor.constraint(equalTo: tableImageView.centerYAnchor),
-      tempLabel.leadingAnchor.constraint(equalTo: tableImageView.trailingAnchor, constant: 8),
-      tempLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
+      tableImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
+      tableImageView.heightAnchor.constraint(equalTo: tableImageView.widthAnchor)
     ])
 
     NSLayoutConstraint.activate([

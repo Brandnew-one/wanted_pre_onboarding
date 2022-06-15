@@ -34,11 +34,12 @@ class CityWeatherView: UIView, ViewRepresentable {
     let layout = UICollectionViewFlowLayout()
     let spacing: CGFloat = 8
     let width = UIScreen.main.bounds.width - spacing * 3
-    let height = UIScreen.main.bounds.height - spacing * 4
+//    let height = UIScreen.main.bounds.height - spacing * 4
 
     layout.minimumInteritemSpacing = spacing
     layout.minimumLineSpacing = spacing
-    layout.itemSize = CGSize(width: width / 2, height: height / 3)
+//    layout.itemSize = CGSize(width: width / 2, height: height / 3)
+    layout.itemSize = CGSize(width: width / 2, height: width / 2)
     layout.sectionInset = UIEdgeInsets(
       top: spacing,
       left: spacing,

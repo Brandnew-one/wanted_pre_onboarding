@@ -56,6 +56,7 @@ class DetailWeatherViewController: UIViewController, ViewRepresentable {
   private func setupTableView() {
     detailWeatherView.tableView.delegate = self
     detailWeatherView.tableView.dataSource = self
+    detailWeatherView.tableView.allowsSelection = false
     detailWeatherView.tableView.register(
       DetailImageCell.self,
       forCellReuseIdentifier: DetailImageCell.identifier
@@ -82,7 +83,7 @@ extension DetailWeatherViewController: UITableViewDataSource, UITableViewDelegat
     if indexPath.section == 0 {
       return 200
     } else {
-      return 40
+      return 50
     }
   }
 

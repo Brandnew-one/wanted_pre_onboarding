@@ -197,10 +197,18 @@
 		6584BC732858819700E6933F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6584BC74285881D100E6933F /* Double + Extension.swift */,
-				6584BC7C2858FCA200E6933F /* List + Extension.swift */,
+				6584BC7E28590EC200E6933F /* Extension */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		6584BC7E28590EC200E6933F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6584BC7C2858FCA200E6933F /* List + Extension.swift */,
+				6584BC74285881D100E6933F /* Double + Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
