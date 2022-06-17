@@ -29,10 +29,10 @@ class DetailInformationCell: UITableViewCell, ViewRepresentable, CellRepresentab
       $0.backgroundColor = .black
       $0.textColor = .white
       self.addSubview($0)
-      self.backgroundColor = .black
-      titleLabel.font = .systemFont(ofSize: 12, weight: .heavy)
-      contentLabel.font = .systemFont(ofSize: 14, weight: .heavy)
     }
+    self.backgroundColor = .black
+    titleLabel.font = .systemFont(ofSize: 12, weight: .heavy)
+    contentLabel.font = .systemFont(ofSize: 14, weight: .heavy)
   }
 
   func setupConstraints() {
